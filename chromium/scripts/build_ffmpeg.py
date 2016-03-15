@@ -229,7 +229,7 @@ def main(argv):
 
       # Disable features.
       '--disable-bzlib',
-      '--disable-error-resilience',
+      #'--disable-error-resilience',
       '--disable-iconv',
       '--disable-lzo',
       '--disable-network',
@@ -250,6 +250,9 @@ def main(argv):
       '--enable-decoder=pcm_s16be,pcm_s24be,pcm_mulaw,pcm_alaw',
       '--enable-demuxer=ogg,matroska,wav',
       '--enable-parser=opus,vp3,vorbis,vp8',
+      '--enable-decoder=aac,h264,mp3,mpeg4,mxf,mpeg2video',
+      '--enable-demuxer=aac,mp3,mov,mxf',
+      '--enable-parser=aac,h264,mpegaudio,mpeg4video,mxf,mpegvideo',
   ])
 
   # --optflags doesn't append multiple entries, so set all at once.
@@ -416,10 +419,10 @@ def main(argv):
       ])
 
   # Google Chrome & ChromeOS specific configuration.
-  configure_flags['Chrome'].extend([
-      '--enable-decoder=aac,h264,mp3',
+  configure_flags['Common'].extend([
+      '--enable-decoder=aac,h264,mp3,mpeg4',
       '--enable-demuxer=aac,mp3,mov',
-      '--enable-parser=aac,h264,mpegaudio',
+      '--enable-parser=aac,h264,mpegaudio,mpeg4video',
   ])
 
   # ChromiumOS specific configuration.
@@ -434,7 +437,7 @@ def main(argv):
   # Google ChromeOS specific configuration.
   # We want to make sure to play everything Android generates and plays.
   # http://developer.android.com/guide/appendix/media-formats.html
-  configure_flags['ChromeOS'].extend([
+  configure_flags['Common'].extend([
       # Enable playing avi files.
       '--enable-decoder=mpeg4',
       '--enable-parser=h263,mpeg4video',

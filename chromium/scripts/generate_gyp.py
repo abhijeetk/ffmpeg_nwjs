@@ -167,7 +167,7 @@ def CleanObjectFiles(object_files):
       'libavformat/sdp.o',
       'libavutil/adler32.o',
       'libavutil/audio_fifo.o',
-      'libavutil/aes.o',
+      #'libavutil/aes.o',
       'libavutil/blowfish.o',
       'libavutil/cast5.o',
       'libavutil/des.o',
